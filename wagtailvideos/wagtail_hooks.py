@@ -8,7 +8,10 @@ from wagtail.admin.menu import Menu, MenuItem, SubmenuMenuItem
 from wagtail.admin.panels import InlinePanel
 from wagtail.admin.search import SearchArea
 from wagtail.admin.site_summary import SummaryItem
-from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
+
+
+from wagtail.snippets.models import register_snippet
+from wagtail.snippets.views.snippets import SnippetViewSet
 
 from wagtailvideos import get_video_model, is_modeladmin_installed, urls
 from wagtailvideos.edit_handlers import VideoChooserPanel
@@ -20,7 +23,7 @@ from .permissions import permission_policy
 Video = get_video_model()
 
 
-class TracksAdmin(ModelAdmin):
+class TracksAdminViewset(SnippetViewSet):
     model = Video.get_track_listing_model()
     menu_icon = 'openquote'
     menu_label = _('Text tracks')
@@ -38,7 +41,7 @@ class TracksAdmin(ModelAdmin):
 
 
 if is_modeladmin_installed():
-    modeladmin_register(TracksAdmin)
+    register_snippet(TracksAdminViewset)
 
 
 @hooks.register('register_admin_urls')

@@ -9,7 +9,8 @@ from wagtail.admin import messages
 from wagtail.admin.auth import PermissionPolicyChecker
 from wagtail.admin.forms.search import SearchForm
 from wagtail.admin.models import popular_tags_for_model
-from wagtail.contrib.modeladmin.helpers import AdminURLHelper
+
+# from wagtail.contrib.modeladmin.helpers import AdminURLHelper
 from wagtail.models import Collection
 from wagtail.search.backends import get_search_backends
 
@@ -120,12 +121,12 @@ def edit(request, video_id):
         ).format(video.title), buttons=[
             messages.button(reverse('wagtailvideos:delete', args=(video.id,)), _('Delete'))
         ])
-    if is_modeladmin_installed():
-        url_helper = AdminURLHelper(Video.get_track_listing_model())
-        if hasattr(video, 'track_listing'):
-            action_url = url_helper.get_action_url('edit', instance_pk=video.track_listing.pk)
-        else:
-            action_url = url_helper.create_url
+    # if is_modeladmin_installed():
+    #     url_helper = AdminURLHelper(Video.get_track_listing_model())
+    #     if hasattr(video, 'track_listing'):
+    #         action_url = url_helper.get_action_url('edit', instance_pk=video.track_listing.pk)
+    #     else:
+    #         action_url = url_helper.create_url
     else:
         action_url = ''
 
