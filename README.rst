@@ -13,7 +13,7 @@ Requirements
 ------------
 
 -  Wagtail >= 4.0 (for older wagtail version see the tags)
--  `ffmpeg <https://ffmpeg.org/>`__
+-  ffmpeg
 
 Installing
 ----------
@@ -22,7 +22,7 @@ Install using pypi
 
 .. code:: bash
 
-    pip install wagtailvideos
+    pip install git+https://github.com/infofactory/wagtail-videos.git
 
 Add `wagtailvideos` to your installed apps.
 
