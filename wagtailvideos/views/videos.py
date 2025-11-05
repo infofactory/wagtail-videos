@@ -99,7 +99,7 @@ def edit(request, video_id):
     if hasattr(video, 'track_listing'):
         action_url = reverse('wagtailvideos_tracks:edit', args=(video.track_listing.pk,))
     else:
-        action_url = reverse('wagtailvideos_tracks:create', args=(video.pk,))
+        action_url = reverse('wagtailvideos_tracks:add')
 
     return render(request, "wagtailvideos/videos/edit.html", {
         'video': video,
